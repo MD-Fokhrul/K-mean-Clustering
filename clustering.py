@@ -1,7 +1,11 @@
+# pakage
 import numpy as np 
 import matplotlib.pyplot as plt
 
 # incomplete in elbow rule 
+
+# main algo
+
 
 def kmeans(data, k=3, normalize=False, limit=5000):
     """Basic k-means clustering algorithm.
@@ -44,7 +48,7 @@ def kmeans(data, k=3, normalize=False, limit=5000):
         # this will not execute if the for loop exits on a break.
         raise RuntimeError("Clustering algorithm did not complete within {0:d} iterations".format(limit))
             
-    # if data was normalized, the cluster group centers are no longer scaled the same way the original
+    
     # data is scaled.
     
     #WCSS_array=np.append(WCSS_array,kmeans.WCSS())
@@ -72,13 +76,14 @@ for i in range(1, 11):
     WCSS.append(wcss)
     #return WCSS_array
     
-
+# this part will update later
+'''
 plt.plot(range(1, len(WCSS)+1), WCSS)
 plt.title('The Elbow Method')
 plt.xlabel('Number of clusters')
 plt.ylabel('WCSS')
 plt.show()
-
+'''
 kmens = kmeans(data = X, k = 5)
 
 center = kmens['centers']
@@ -86,23 +91,25 @@ levels = kmens['classifications']
 
 #WCSS = wcss()
       
+# visualization
 
+# visualize with no label of data
 
 plt.scatter(X[:, 0], X[:, 1], label = 'Cluster')
 plt.xlabel('Annual Income (k$)')
 plt.ylabel('Spending Score (1-100)')
 plt.show()
 
-
+# visualize with cluster
 color=['red','blue','green','cyan','magenta']
 clusters=['cluster1','cluster2','cluster3','cluster4','cluster5']
 for i in range(5):
     plt.scatter(X[levels == i, 0], X[levels == i, 1], s = 100, c = color[i], label = clusters[i])
-plt.scatter(X[levels == 1, 0], X[levels == 1, 1], s = 100, c = 'blue', label = 'Cluster 2')
-plt.scatter(X[levels == 2, 0], X[levels == 2, 1], s = 100, c = 'green', label = 'Cluster 3')
-plt.scatter(X[levels == 3, 0], X[levels == 3, 1], s = 100, c = 'cyan', label = 'Cluster 4')
-plt.scatter(X[levels == 4, 0], X[levels == 4, 1], s = 100, c = 'magenta', label = 'Cluster 5')
-plt.scatter(center[:, 0], center[:, 1], s = 300, c = 'yellow', label = 'Centroids')
+#plt.scatter(X[levels == 1, 0], X[levels == 1, 1], s = 100, c = 'blue', label = 'Cluster 2')
+#plt.scatter(X[levels == 2, 0], X[levels == 2, 1], s = 100, c = 'green', label = 'Cluster 3')
+#plt.scatter(X[levels == 3, 0], X[levels == 3, 1], s = 100, c = 'cyan', label = 'Cluster 4')
+#plt.scatter(X[levels == 4, 0], X[levels == 4, 1], s = 100, c = 'magenta', label = 'Cluster 5')
+#plt.scatter(center[:, 0], center[:, 1], s = 300, c = 'yellow', label = 'Centroids')
 plt.title('Clusters of customers')
 plt.xlabel('Annual Income (k$)')
 plt.ylabel('Spending Score (1-100)')
